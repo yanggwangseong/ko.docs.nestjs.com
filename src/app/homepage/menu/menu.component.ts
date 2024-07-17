@@ -18,7 +18,7 @@ export class MenuComponent implements OnInit {
   isSidebarOpened = true;
   readonly items = [
     {
-      title: 'Introduction',
+      title: '소개',
       isOpened: false,
       path: '/',
     },
