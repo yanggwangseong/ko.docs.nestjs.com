@@ -1,18 +1,18 @@
-### Controllers
+### 컨트롤러
 
-Controllers are responsible for handling incoming **requests** and returning **responses** to the client.
+컨트롤러는 들어오는 **요청**을 처리하고 클라이언트에게 **응답**을 반환하는 역할을 담당합니다.
 
 <figure><img class="illustrative-image" src="/assets/Controllers_1.png" /></figure>
 
-A controller's purpose is to receive specific requests for the application. The **routing** mechanism controls which controller receives which requests. Frequently, each controller has more than one route, and different routes can perform different actions.
+컨트롤러의 목적은 애플리케이션에 대한 특정 요청을 받는 것입니다. **라우팅** 메커니즘은 어떤 컨트롤러가 어떤 요청을 받을지 제어합니다. 일반적으로 각 컨트롤러는 하나 이상의 라우트를 가지며, 서로 다른 라우트는 다양한 작업을 수행할 수 있습니다.
 
-In order to create a basic controller, we use classes and **decorators**. Decorators associate classes with required metadata and enable Nest to create a routing map (tie requests to the corresponding controllers).
+기본 컨트롤러를 생성하기 위해 우리는 클래스와 **데코레이터**를 사용합니다. 데코레이터는 클래스에 필요한 메타데이터를 연결하고 Nest가 라우팅 맵을 생성할 수 있게 합니다(요청을 해당 컨트롤러에 연결).
 
-> info **Hint** For quickly creating a CRUD controller with the [validation](https://docs.nestjs.com/techniques/validation) built-in, you may use the CLI's [CRUD generator](https://docs.nestjs.com/recipes/crud-generator#crud-generator): `nest g resource [name]`.
+> info **힌트** 내장된 [검증](https://docs.nestjs.com/techniques/validation)을 갖춘 CRUD 컨트롤러를 빠르게 생성하려면 CLI의 [CRUD 생성기](https://docs.nestjs.com/recipes/crud-generator#crud-generator)를 사용할 수 있습니다: `nest g resource [name]`.
 
-#### Routing
+#### 라우팅
 
-In the following example we'll use the `@Controller()` decorator, which is **required** to define a basic controller. We'll specify an optional route path prefix of `cats`. Using a path prefix in a `@Controller()` decorator allows us to easily group a set of related routes, and minimize repetitive code. For example, we may choose to group a set of routes that manage interactions with a cat entity under the route `/cats`. In that case, we could specify the path prefix `cats` in the `@Controller()` decorator so that we don't have to repeat that portion of the path for each route in the file.
+다음 예제에서는 기본 컨트롤러를 정의하는 데 **필수적인** `@Controller()` 데코레이터를 사용할 것입니다. `cats`의 선택적 라우트 경로 접두사를 지정할 것입니다. `@Controller()` 데코레이터에서 경로 접두사를 사용하면 관련된 라우트 세트를 쉽게 그룹화하고 반복적인 코드를 최소화할 수 있습니다. 예를 들어, `cats` 엔터티와의 상호작용을 관리하는 라우트 세트를 `/cats` 경로 아래에 그룹화할 수 있습니다. 이 경우, 파일의 각 라우트에 대해 경로의 해당 부분을 반복할 필요가 없도록 `@Controller()` 데코레이터에 `cats` 경로 접두사를 지정할 수 있습니다.
 
 ```typescript
 @@filename(cats.controller)
